@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'sendgrid/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "sendgrid"
+  spec.name          = "sendgrid_subuser_api"
   spec.version       = Sendgrid::VERSION
   spec.authors       = ["Pedro Axelrud"]
   spec.email         = ["pedro@mailee.me"]
