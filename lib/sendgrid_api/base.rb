@@ -1,4 +1,4 @@
-module Sendgrid
+module SendgridAPI
   class Base
     def self.api_user= value
       @@api_user = value
