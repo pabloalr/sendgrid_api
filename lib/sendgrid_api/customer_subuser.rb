@@ -1,7 +1,7 @@
 require 'rest_client'
 require 'json'
 
-module SendgridAPI
+module SendGridAPI
   class CustomerSubuser
     attr_reader :username
 
@@ -83,9 +83,9 @@ module SendgridAPI
     end
 
     def self.credentials
-      raise "Please setup SendgridAPI::Base.api_user" unless SendgridAPI::Base.api_user
-      raise "Please setup SendgridAPI::Base.api_key" unless SendgridAPI::Base.api_key
-      {api_user: SendgridAPI::Base.api_user, api_key: SendgridAPI::Base.api_key}
+      raise "Please setup SendGridAPI::Base.api_user" unless SendGridAPI::Base.api_user
+      raise "Please setup SendGridAPI::Base.api_key" unless SendGridAPI::Base.api_key
+      {api_user: SendGridAPI::Base.api_user, api_key: SendGridAPI::Base.api_key}
     end
 
   end

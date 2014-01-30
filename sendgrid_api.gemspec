@@ -5,7 +5,7 @@ require 'sendgrid_api/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "sendgrid_api"
-  spec.version       = Sendgrid::VERSION
+  spec.version       = SendGrid::VERSION
   spec.authors       = ["Pedro Axelrud"]
   spec.email         = ["pedro@mailee.me"]
   spec.description   = %q{TODO: Write a gem description}

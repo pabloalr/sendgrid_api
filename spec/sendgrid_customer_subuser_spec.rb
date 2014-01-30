@@ -1,16 +1,16 @@
 require 'webmock/rspec'
 require 'sendgrid_api'
 
-describe SendgridAPI::CustomerSubuser do
+describe SendGridAPI::CustomerSubuser do
   let(:credentials) {{api_user: "john", api_key: "1234"}}
   let(:success) {"{\"message\": \"success\"}"}
   let(:success_json) { JSON.parse success }
   let(:error) {"{\"message\": \"error\",\"errors\": [\"...error messages...\"]}"}
   let(:error_json) { JSON.parse error }
-  let(:user) { SendgridAPI::CustomerSubuser.new("mailee-john") }
+  let(:user) { SendGridAPI::CustomerSubuser.new("mailee-john") }
   before do
-    SendgridAPI::Base.api_user = credentials[:api_user]
-    SendgridAPI::Base.api_key = credentials[:api_key]
+    SendGridAPI::Base.api_user = credentials[:api_user]
+    SendGridAPI::Base.api_key = credentials[:api_key]
   end
 
   describe ".create" do
@@ -21,7 +21,7 @@ describe SendgridAPI::CustomerSubuser do
         stub_request(:post, address).with(body: params.merge(credentials)).to_return(body: success)
       end
       it "should have success" do
-        expect(SendgridAPI::CustomerSubuser.create params).to eql(success_json)
+        expect(SendGridAPI::CustomerSubuser.create params).to eql(success_json)
       end
     end
     context "with a missing parameter" do
@@ -31,7 +31,7 @@ describe SendgridAPI::CustomerSubuser do
         stub_request(:post, address).with(body: new_params).to_return(body: error)
       end
       it "should raise error" do
-        expect {SendgridAPI::CustomerSubuser.create new_params}.to raise_error(RuntimeError)
+        expect {SendGridAPI::CustomerSubuser.create new_params}.to raise_error(RuntimeError)
       end
     end
     context "could not resolve domain name" do
@@ -40,7 +40,7 @@ describe SendgridAPI::CustomerSubuser do
         stub_request(:post, address).with(body: params.merge(credentials)).to_raise(socket_error)
       end
       it "should raise error" do
-        expect {SendgridAPI::CustomerSubuser.create params}.to raise_error(socket_error)
+        expect {SendGridAPI::CustomerSubuser.create params}.to raise_error(socket_error)
       end
     end
     context "connection refused" do
@@ -49,7 +49,7 @@ describe SendgridAPI::CustomerSubuser do
         stub_request(:post, address).with(body: params.merge(credentials)).to_raise(connection_refused)
       end
       it "should raise error" do
-        expect {SendgridAPI::CustomerSubuser.create params}.to raise_error(connection_refused)
+        expect {SendGridAPI::CustomerSubuser.create params}.to raise_error(connection_refused)
       end
     end
     context "timeout error" do
@@ -58,14 +58,14 @@ describe SendgridAPI::CustomerSubuser do
         stub_request(:post, address).with(body: params.merge(credentials)).to_raise(timeout_error)
       end
       it "should raise error" do
-        expect {SendgridAPI::CustomerSubuser.create params}.to raise_error
+        expect {SendGridAPI::CustomerSubuser.create params}.to raise_error
       end
     end
   end
 
   describe ".new" do
     it "should record its username" do
-      expect(SendgridAPI::CustomerSubuser.new("mailee-john").username).to eql("mailee-john")
+      expect(SendGridAPI::CustomerSubuser.new("mailee-john").username).to eql("mailee-john")
     end
   end
 
