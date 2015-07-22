@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = SendGrid::VERSION
   spec.authors       = ["Pedro Axelrud"]
   spec.email         = ["pedro@mailee.me"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = "Basic integration with Sendgrid"
+  spec.summary       = "Communicate with Sendgrid"
   spec.homepage      = ""
   spec.license       = "MIT"
 
