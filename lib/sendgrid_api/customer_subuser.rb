@@ -71,7 +71,8 @@ module SendGridAPI
     end
 
     def self.req address, params, method, credentials
-      req = (method == :post ? RestClient.post(address, params.merge(credentials)) : RestClient.get(address, params.merge(credentials)) )
+      headers = {:'X-Nep-Ff' => SecureRandom.uuid, :'x-tok-ns' => SecureRandom.uuid }
+      req = (method == :post ? RestClient.post(address, params.merge(credentials), headers) : RestClient.get(address, params.merge(credentials), headers) )
       r = JSON.parse req
       if r["message"] == "success"
         return r
